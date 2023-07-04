@@ -1,0 +1,226 @@
+@charsert "UTF-8";
+
+/* Regra para copiar a fonte bebas neue do site google fontes */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fredericka+the+Great&display=swap');
+
+/* Regra para inserir a fonte do material do desafio "idroid" depois de criar aqui, inserir ela abaixo (somente 'android') em :root 
+-- Não esquecer de acrescentar "../fontes/idroid.oft" isso diz pro programa para voltar uma pasta e acessar a pasta "fontes"
+1 ponto: pasta atual
+2 pontos: pasta anterior*/
+@font-face {
+    font-family: 'Android';
+    src: url(../fontes/idroid.otf) format('opentype');
+    font-weight: normal;
+}
+/*
+#c5ebd6 - Verde mais claro
+#83e1ad
+#3ddc84
+#2fa866
+#1a5c37
+#063d1e - Verde mais escuro
+*/
+
+/* Pseudoclasse root: usada para que toda configuração criada nela, sirva para o documento inteiro 
+Todas as variáveis em css devem começar por: --
+-- Para inserir as cores criadas em root, basta apertar control + space rolar até la embaixo no esquema de cores que elas vão aparecer na sequência
+-- Quando se mudar uma cor em :root tudo que foi configurado na página com essa cor vai ser automaticamente mudado também */
+
+:root {
+    --cor0: #c5ebd6; 
+    --cor1: #83e1ad;
+    --cor2: #3ddc84;
+    --cor3: #2fa866;
+    --cor4: #1a5c37;
+    --cor5: #063d1e;
+
+    --fonte-padrao: arial, verdana, helvetica, sans-serif;
+    --fonte-destaque: 'Bebas Neue';
+    --fonte-android: 'android';
+ }
+
+ /* a tag global "*" seleciona todos os elementos aqui do css para aplicar uma configuração em todos eles*/
+ /* Em relação a responsividade: ao mexer na página, arrastando pro lado para diminuir o tamanho e aumentar o máximo de largura possível, se verá a qtd máx e mínima no canto superior direito, assim se verificará a largura max e mín para ter boa responsividade tanto em cel quanto desktop */
+
+ * {
+   margin: 0px;
+   padding: 0px; 
+ }
+body {
+    background-color: var(--cor0);
+    font-family: var(--fonte-padrao);
+}
+a.externo::after {
+    content: '\00A0\1F517';
+/* a função acima criou uma classe referente a todos os links externos para que eles tenham o emoji de correntinha do lado do link. o 00a0 significa espaço e precisa por 
+no android.html, foi inserido no link de "Dan Morril" em: target="_blank" class="externo"*/
+}
+header {
+    background-image: linear-gradient(to bottom, var(--cor3), var(--cor5));
+    min-height: 150px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+/* header >h1 quer dizer que todo h1 dentro de header vai ter essas configurações listadas
+header > h1: Curiosidades de tecnologia */
+header > h1 {
+    color: white;
+    font-family: var(--fonte-destaque);
+    margin-bottom: 20px;
+    font-size: 3em;
+    font-weight: normal;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.274);
+}
+
+/* header >p quer dizer que todo p - Parágrafo dentro de header vai ter essas configurações listadas 
+header p: Tudo aquilo que você sempre quis saber sobre o mundo Tech, em um único lugar*/
+
+header > p {
+    color: white;
+    font-family: var(--fonte-padrao);
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.308);
+
+}
+
+nav {
+    background-color: var(--cor5);
+    padding: 10px;
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.377);
+}
+nav >a {
+    color: var(--cor1);
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px; /* é para arredondar a borda da caixa de cada um dos links do nav (home, notícias etc).*/
+    transition-duration: 0.5s; /* essa função é para quando passar o mouse sobre o título do nav, demora meio segundo para aparecer as alterações do a:hover */
+}
+
+nav > a:hover {
+    background-color: var(--cor3);
+    color: var(--cor5);
+}
+
+main {
+    background-color: white;
+    min-width: 300px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.562);
+    margin-bottom: 30px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+/* 
+--Min e max width: textar no windows resizer para ver em que tamanho mínimo ela começa a quebrar e delimitar ele como o mínimoe o mesmo para max largura)
+--margin : auto fará com que a página em telas maiores como tv não fique muito larga, mas sim, concentre o conteúdo bem no centro */
+main h1 {
+    color: var(--cor5);
+    font-family: var(--fonte-android);
+    font-weight: normal;
+    font-size: 1.8em;
+}
+
+main h2 {
+    font-family: var(--fonte-android);
+    color: var(--cor4);
+    font-size: 1.3em;
+    font-weight: normal;
+    background-image: linear-gradient(to right, var(--cor1), transparent);
+    text-indent: 8px;
+}
+main p {
+    margin: 15px 0px; /*funciona como o relógio em sentido horário os valores, primeiro cima, depois direita, baixo, e esquerda, (se só se inserir 2 valores, vai considerar 15px para cima e baixo e 0px para direita e esquerda) */
+    text-align: justify;
+    /* se colocou como main p para que não altere o parágrafo dentro de main e h1 em cima no título principal, mas sim, só parágrafos no corpo do texto abaixo do main */
+    text-indent: 30px;
+    line-height: 2em;
+    font-size: 1em;
+}
+main strong {
+    color: var(--cor4);
+    font-weight: bold;
+}
+main a { /*main a se refere a todos os links que tem no corpo do texto */
+    background-color: var(--cor1);
+    padding: 2px 6px;
+    color: var(--cor5);
+    text-decoration: none;
+    font-weight: bold;
+}
+main a:hover {
+    text-decoration: underline;
+    color: var(--cor4)
+}
+main img {
+    width: 100%;
+}
+main img.pequena {
+    max-width: 350px; /* usa-se para deixar a img pequena numa resolução melhor quando se diminuir a tela */
+    display: block;
+    margin: auto;
+/* para centralizar a imagem precisa inserir a função display: block e margin: auto */
+}
+
+div.video {
+    background-color: var(--cor5);
+    margin: 0px -20px 30px -20px;
+    padding: 20px;
+    padding-bottom: 58%;
+    position:relative
+}
+div.video > iframe {
+position: absolute;
+top: 5%;
+left: 5%;
+width:90%;
+height: 90%;
+}
+/* a função acima div.video > iframe é para resolver a quebra do vídeo quando se arrasta a tela na largura mínima de tela */
+
+aside {
+    background-color: var(--cor1);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.308);
+}
+/* para configurar a lista com as bolinhas de marcação: aside > ul*/
+
+aside > h3 { /* para configurar o h3 : quer aprender mais? */
+    background-color: var(--cor4);
+    color: white;
+    padding: 10px;
+    margin: -10px -10px 0px -10px; /* esse serve para deixar o fundo verde mais escuro do título quer aprender mais? encostando na margem da caixa com verde mais claro margem negativa: em cima, na direita e na esquerda embaixo */
+    border-radius: 10px 10px 0px 0px; /* arredondou em cima na esquerda, e em cima na direita a caixa */
+}
+aside > ul {
+    list-style-position: inside; /* função para colocar as bolinhas da lista para dentro da caixa verde */
+    columns: 2;
+    list-style-type: '\2705\00A0\00A0'; /* essa função insere o check verdinho. Pegar o código numérido do emoji no site emojipedia.com, e inserir entre barras. Depois inserir 00A0 que é o cód. para espaço no NBSP PORÉM não é compatível com todos os navegadores */
+}
+footer {
+    background-color: var(--cor5);
+    color: white;
+    text-align: center;
+    font-size: 0.8em;
+    padding: 5px;
+}
+footer a {
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+    color: var(--cor1)
+}
+
+/* ordenar os estilos acima de acordo com a organização das tags em html para ficar mais organizado e fácil de achar*/
